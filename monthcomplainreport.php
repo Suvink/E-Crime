@@ -49,7 +49,7 @@ $result=mysqli_query($conn,"select   cid,a_no,location,type_crime,d_o_c,descript
 
 
 }
- if($year=="" && $month=="")   
+ if($year=="" && $month=="")   {
     
     
 	 
