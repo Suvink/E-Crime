@@ -52,9 +52,10 @@
 
          function getCurrentAddress(location) {
               currgeocoder.geocode({
-                  'location': location;
+                  'location': location
 
-            }, function(results, status) {
+            },
+            function(results, status) {
            
                 if (status == google.maps.GeocoderStatus.OK) {
                     console.log(results[0]);
