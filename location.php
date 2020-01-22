@@ -52,7 +52,7 @@
 
          function getCurrentAddress(location) {
               currgeocoder.geocode({
-                  'location': location
+                  'location': location;
 
             }, function(results, status) {
            
