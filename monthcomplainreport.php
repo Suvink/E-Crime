@@ -22,41 +22,24 @@
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
     $month=$_POST['month'];
-	
-	
-	
-		
-	
-	 $year=$_POST['year'];
+	  $year=$_POST['year'];
+	  $status=$_POST['status'];
+	  $location=$_POST['location'];
+	  $type_crime=$_POST['type_crime'];
 	 
-		
-	
-	 
-	 
-	 $status=$_POST['status'];
-	 
-	 
-	 $location=$_POST['location'];
-	 
-	 
-	 $type_crime=$_POST['type_crime'];
-	 
-	 $result=mysqli_query($conn,"select   c_id,a_no,location,type_crime,d_o_c,description,inc_status,pol_status,p_id    from complaint where YEAR(d_o_c)='$year' AND MONTH(d_o_c)='$month' AND inc_status='$incstatus' AND pol_status='$status' AND location='$location' AND type_crime='$type_crime' " );
+	  $result=mysqli_query($conn,"select   c_id,a_no,location,type_crime,d_o_c,description,inc_status,pol_status,p_id    from complaint where YEAR(d_o_c)='$year' AND MONTH(d_o_c)='$month' AND inc_status='$incstatus' AND pol_status='$status' AND location='$location' AND type_crime='$type_crime' " );
 
-if($year=="")
-{       
-$result=mysqli_query($conn,"select   cid,a_no,location,type_crime,d_o_c,description,inc_status,pol_status,p_id    from complaint where  MONTH(d_o_c)='$month' AND inc_status='$incstatus' AND pol_status='$status' AND location='$location' AND type_crime='$type_crime' " );
+    if($year==""){       
+      $result=mysqli_query($conn,"select   cid,a_no,location,type_crime,d_o_c,description,inc_status,pol_status,p_id    from complaint where  MONTH(d_o_c)='$month' AND inc_status='$incstatus' AND pol_status='$status' AND location='$location' AND type_crime='$type_crime' " );
+    }
 
-
-}
- if($year=="" && $month=="")   {
-    
-    
-	 
-	 
+    if($year=="" && $month=="")   {
+	  }
 	}
-	}
-    ?>
+?>
+
+<html>
+<head>
  <script>
      function f1()
         {
@@ -227,27 +210,16 @@ $result=mysqli_query($conn,"select   cid,a_no,location,type_crime,d_o_c,descript
 
 <?php
       while($rows=mysqli_fetch_assoc($result)){
-    ?> 
-
-    <tbody style="background-color: white; color: black;">
-      <tr>
-        <td><?php echo $rows['c_id']; ?></td>
-		
-		
-		<td><?php echo $rows['location']; ?></td>
-		<td><?php echo $rows['type_crime']; ?></td>
-		<td><?php echo $rows['d_o_c']; ?></td>
-		<td><?php echo $rows['description']; ?></td>
-		<td><?php echo $rows['inc_status']; ?></td>
-		<td><?php echo $rows['pol_status']; ?></td>
-		
-        
-                  
-      </tr>
-    </tbody>
-    
-    <?php
-    } 
+   
+    echo '<tbody style="background-color: white; color: black;"><tr><td>'.$rows['c_id'].'</td>';
+		echo'
+      <td>'.$rows['location'].'</td>
+      <td>'.$rows['type_crime'].'</td>
+      <td>'.$rows['d_o_c'].'</td>
+      <td>'.$rows['description'].'</td>
+      <td>'.$rows['inc_status'].'</td>
+      <td>'.$rows['pol_status'].'</td></tr></tbody>';
+    }}
     ?>
   
 </table>
